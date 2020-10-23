@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\chris.hayes\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\chris.hayes\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_ArangoDbclient.Net.-1808540587.00" t="ExcludeRecursive" />
+    <e p="C:\Users\chris.hayes\AppData\Roaming\JetBrains\Rider2020.2\consoles\db" t="IncludeRecursive" />
+    <e p="C:\Users\chris.hayes\AppData\Roaming\JetBrains\Rider2020.2\extensions" t="IncludeRecursive" />
+    <e p="C:\Users\chris.hayes\AppData\Roaming\JetBrains\Rider2020.2\scratches" t="IncludeRecursive" />
+    <e p="C:\Users\chris.hayes\Documents\ArangoDb.Client\src\ArangoDbclient.Net" t="IncludeFlat">
+      <e p="ArangoDb.Client" t="IncludeRecursive">
+        <e p="ArangoDb.Client.csproj" t="IncludeRecursive" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Class1.cs" t="Include" />
+        <e p="Collections" t="Include">
+          <e p="BaseCollectionResponse.cs" t="Include" />
+          <e p="GetAllCollections.cs" t="Include" />
+          <e p="GetCollection.cs" t="Include" />
+          <e p="GetCollectionChecksum.cs" t="Include" />
+          <e p="GetCollectionProperties.cs" t="Include" />
+          <e p="GetCollectionResponsibleShard.cs" t="Include" />
+          <e p="GetCollectionRevision.cs" t="Include" />
+          <e p="GetCollectionShards.cs" t="Include" />
+          <e p="GetCollectionStatistics.cs" t="Include" />
+          <e p="GetNumberOfDocuments.cs" t="Include" />
+          <e p="Models" t="Include">
+            <e p="CollectionData.cs" t="Include" />
+            <e p="CollectionFigures.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Database" t="Include">
+          <e p="DeleteDropDatabaseRequest.cs" t="Include" />
+          <e p="GetAccessibleDatabases.cs" t="Include" />
+          <e p="GetCurrentDatabase.cs" t="Include" />
+          <e p="GetDatabases.cs" t="Include" />
+          <e p="Models" t="Include">
+            <e p="CreateDatabaseOptions.cs" t="Include" />
+            <e p="CurrentDatabase.cs" t="Include" />
+            <e p="DatabaseUser.cs" t="Include" />
+            <e p="Sharding.cs" t="Include" />
+          </e>
+          <e p="PostCreateDatabase.cs" t="Include" />
+        </e>
+        <e p="Http" t="Include">
+          <e p="BaseRequest.cs" t="Include" />
+          <e p="BaseResponse.cs" t="Include" />
+          <e p="HttpContextExtensions.cs" t="Include" />
+          <e p="Request.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="ArangoDb.Client.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+      </e>
+      <e p="ArangoDbclient.Net.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
