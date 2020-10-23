@@ -15,6 +15,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: setup ArangoDB
+      uses: xinova/arangodb-action@v1
+      with:
+        arangodb version: default
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
