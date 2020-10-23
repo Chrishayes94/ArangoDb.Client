@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArangoDb.Client", "ArangoDb.Client\ArangoDb.Client.csproj", "{3741EBFD-81D1-49FF-B21A-0AA956536F8E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArangoDb.Client.Tests", "ArangoDb.Client.Tests\ArangoDb.Client.Tests.csproj", "{BBC94FDE-F69E-46F9-9758-19EB27BC98B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{3741EBFD-81D1-49FF-B21A-0AA956536F8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3741EBFD-81D1-49FF-B21A-0AA956536F8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3741EBFD-81D1-49FF-B21A-0AA956536F8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBC94FDE-F69E-46F9-9758-19EB27BC98B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBC94FDE-F69E-46F9-9758-19EB27BC98B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBC94FDE-F69E-46F9-9758-19EB27BC98B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBC94FDE-F69E-46F9-9758-19EB27BC98B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

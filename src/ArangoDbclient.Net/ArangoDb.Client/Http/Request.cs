@@ -1,9 +1,18 @@
 using System;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ArangoDb.Client.Http
 {
+    public class HttpRequest<TRequest, TResponse> : HttpRequest<TRequest, TResponse, object>
+        where TRequest : BaseRequest where TResponse : class, IBaseResponse
+    {
+        public HttpRequest(TRequest request) : base(request)
+        {
+        }
+    }
+
     public class HttpRequest<TRequest, TResponse, TError>
         where TResponse : class, IBaseResponse where TRequest : BaseRequest
     {
@@ -18,12 +27,12 @@ namespace ArangoDb.Client.Http
             Request = request;
         }
 
-        public async Task SendAsync(HttpClient client)
+        public async Task SendAsync(HttpClient client, JsonSerializerOptions serializerOptions = default)
         {
             var responseMessage = await client.SendAsync(_requestMessage);
             if (!responseMessage.IsSuccessStatusCode)
-                ErrorResponse = await responseMessage.Content.ReadAsAsync<TError>();
-            else Response = await responseMessage.Content.ReadAsAsync<TResponse>();
+                ErrorResponse = await responseMessage.Content.ReadAsAsync<TError>(serializerOptions);
+            else Response = await responseMessage.Content.ReadAsAsync<TResponse>(serializerOptions);
         }
 
         public void ConstructRequest(Func<TRequest, HttpRequestMessage> predicate) =>

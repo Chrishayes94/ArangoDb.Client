@@ -8,12 +8,13 @@ namespace ArangoDb.Client.Http
 {
     public static class HttpContentExtensions
     {
-        public static async Task<TObject> ReadAsAsync<TObject>(this HttpContent content)
+        public static async Task<TObject> ReadAsAsync<TObject>(this HttpContent content, JsonSerializerOptions jsonSerializerOptions = default)
         {
             if (content == null) throw new ArgumentNullException(nameof(content));
 
             var stream = await content.ReadAsStreamAsync();
-            return await JsonSerializer.DeserializeAsync<TObject>(stream);
+            var @string = await content.ReadAsStringAsync();
+            return await JsonSerializer.DeserializeAsync<TObject>(stream, jsonSerializerOptions);
         }
     }
 }
