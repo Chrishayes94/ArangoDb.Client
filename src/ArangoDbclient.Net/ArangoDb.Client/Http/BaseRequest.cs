@@ -15,5 +15,7 @@ namespace ArangoDb.Client.Http
 
         [JsonIgnore, QueryIgnore] 
         public string AuthenticationToken { get; set; }
+
+        [JsonIgnore, QueryIgnore] public string CurrentDatabase { get; set; } = "_system";
     }
 }

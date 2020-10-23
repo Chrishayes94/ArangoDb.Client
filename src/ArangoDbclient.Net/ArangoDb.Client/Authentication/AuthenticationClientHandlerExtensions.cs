@@ -6,7 +6,8 @@ namespace ArangoDb.Client.Authentication
     public static class AuthenticationClientHandlerExtensions
     {
         public static Task<PostAuthenticationResponse> Authenticate(this IClientHandler clientHandler, string username,
-            string password) => clientHandler.Authenticate(new PostAuthenticationRequest(username, password));
+            string password) => clientHandler.Authenticate(new PostAuthenticationRequest(username, password)
+            {CurrentDatabase = null});
         
         public static Task<PostAuthenticationResponse> Authenticate(this IClientHandler clientHandler,
             PostAuthenticationRequest request) =>

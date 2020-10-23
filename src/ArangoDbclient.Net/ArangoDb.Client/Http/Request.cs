@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ArangoDb.Client.Http
 {
-    public class HttpRequest<TRequest, TResponse> : HttpRequest<TRequest, TResponse, object>
+    public class HttpRequest<TRequest, TResponse> : HttpRequest<TRequest, TResponse, BaseError>
         where TRequest : BaseRequest where TResponse : class, IBaseResponse
     {
         public HttpRequest(TRequest request) : base(request)
@@ -31,8 +31,12 @@ namespace ArangoDb.Client.Http
         {
             var responseMessage = await client.SendAsync(_requestMessage);
             if (!responseMessage.IsSuccessStatusCode)
+            {
                 ErrorResponse = await responseMessage.Content.ReadAsAsync<TError>(serializerOptions);
-            else Response = await responseMessage.Content.ReadAsAsync<TResponse>(serializerOptions);
+                throw new HttpRequestException(ErrorResponse.ToString());
+            }
+
+            Response = await responseMessage.Content.ReadAsAsync<TResponse>(serializerOptions);
         }
 
         public void ConstructRequest(Func<TRequest, HttpRequestMessage> predicate) =>

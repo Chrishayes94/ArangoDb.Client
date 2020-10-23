@@ -24,11 +24,16 @@ namespace ArangoDb.Client.Http
             CancellationToken cancellationToken = default) where TRequest : BaseRequest
             where TResponse : class, IBaseResponse
         {
-            using var client = _httpClientFactory.Create("http://127.0.0.1:8529");
+            var client = _httpClientFactory.Create("http://127.0.0.1:8529");
             var httpRequest = new HttpRequest<TRequest, TResponse>(request);
+            
             httpRequest.ConstructRequest(() =>
             {
-                var message = new HttpRequestMessage(HttpMethod.Post, request.Endpoint)
+                var endpoint = string.IsNullOrEmpty(request.CurrentDatabase)
+                    ? request.Endpoint
+                    : $"_db/{request.CurrentDatabase}{request.Endpoint}";
+
+                var message = new HttpRequestMessage(HttpMethod.Post, endpoint)
                 {
                     Content = new StringContent(JsonSerializer.Serialize(request, _jsonSerializerOptions), Encoding.Default, "application/json")
                 };
@@ -38,15 +43,35 @@ namespace ArangoDb.Client.Http
             });
 
             await httpRequest.SendAsync(client, _jsonSerializerOptions).ConfigureAwait(false);
+            
             return httpRequest.Response;
         }
 
-        public Task<TResponse> GetAsync<TRequest, TResponse>(TRequest request,
+        public async Task<TResponse> GetAsync<TRequest, TResponse>(TRequest request,
             CancellationToken cancellationToken = default) where TRequest : BaseRequest
             where TResponse : class, IBaseResponse
         {
-            // TODO create query based on properties
-            throw new System.NotImplementedException();
+            var client = _httpClientFactory.Create("http://127.0.0.1:8529");
+            var httpRequest = new HttpRequest<TRequest, TResponse>(request);
+            
+            httpRequest.ConstructRequest(() =>
+            {
+                var endpoint = string.IsNullOrEmpty(request.CurrentDatabase)
+                    ? request.Endpoint
+                    : $"_db/{request.CurrentDatabase}{request.Endpoint}";
+
+                // TODO Add Query
+                
+                var message = new HttpRequestMessage(HttpMethod.Get, endpoint);
+                if (!string.IsNullOrEmpty(request.AuthenticationToken))
+                    message.Headers.Authorization = new AuthenticationHeaderValue("bearer", request.AuthenticationToken);
+                
+                return message;
+            });
+
+            await httpRequest.SendAsync(client, _jsonSerializerOptions).ConfigureAwait(false);
+            
+            return httpRequest.Response;
         }
 
         public Task<TResponse> DeleteAsync<TRequest, TResponse>(TRequest request,

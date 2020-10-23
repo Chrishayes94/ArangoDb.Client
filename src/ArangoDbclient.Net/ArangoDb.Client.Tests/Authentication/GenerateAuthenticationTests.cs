@@ -14,7 +14,7 @@ namespace ArangoDb.Client.Tests.Authentication
             const string password = "";
             
             // Act
-            var authenticationResponse = await ClientHandler.Authenticate(username, password);
+            var authenticationResponse = await Authenticate(username, password);
             
             // Assert
             Assert.True(!string.IsNullOrEmpty(authenticationResponse.Jwt));

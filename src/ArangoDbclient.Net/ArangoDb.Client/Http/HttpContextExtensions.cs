@@ -13,7 +13,6 @@ namespace ArangoDb.Client.Http
             if (content == null) throw new ArgumentNullException(nameof(content));
 
             var stream = await content.ReadAsStreamAsync();
-            var @string = await content.ReadAsStringAsync();
             return await JsonSerializer.DeserializeAsync<TObject>(stream, jsonSerializerOptions);
         }
     }
